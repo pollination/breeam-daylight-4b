@@ -1,7 +1,7 @@
 from pollination_dsl.dag import Inputs, DAG, task, Outputs
 from dataclasses import dataclass
 from pollination.two_phase_daylight_coefficient import TwoPhaseDaylightCoefficientEntryPoint
-from pollination.honeybee_radiance_postprocess.breeam import Breeam4b
+from pollination.lbt_honeybee.postprocess import Breeam4b
 
 # input/output alias
 from pollination.alias.inputs.model import hbjson_model_grid_input
@@ -88,7 +88,7 @@ class BreeamDaylight4bEntryPoint(DAG):
         template=Breeam4b,
         needs=[run_two_phase_daylight_coefficient]
     )
-    def leed_daylight_option_one(
+    def breem_daylight_4b(
         self, folder='results', model=model
     ):
         return [
@@ -105,4 +105,14 @@ class BreeamDaylight4bEntryPoint(DAG):
 
     breeam_summary = Outputs.folder(
         source='breeam_summary', description='BREEAM summary folder.'
+    )
+
+    summary = Outputs.file(
+        description='JSON file containing the number of credits achieved.',
+        source='breeam_summary/summary.json',
+    )
+
+    program_summary = Outputs.file(
+        description='JSON file with a summary of each program type.',
+        source='breeam_summary/program_summary.json',
     )

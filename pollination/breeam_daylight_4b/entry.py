@@ -10,6 +10,7 @@ from pollination.alias.inputs.north import north_input
 from pollination.alias.inputs.radiancepar import rad_par_annual_input
 from pollination.alias.inputs.grid import grid_filter_input, \
     min_sensor_count_input, cpu_count
+from pollination.alias.outputs.daylight import breeam_summary, breeam_program_summary
 
 
 @dataclass
@@ -103,16 +104,16 @@ class BreeamDaylight4bEntryPoint(DAG):
         'contain illuminance matrices for each sensor at each timestep of the analysis.'
     )
 
-    breeam_summary = Outputs.folder(
+    breeam_folder = Outputs.folder(
         source='breeam_summary', description='BREEAM summary folder.'
     )
 
     summary = Outputs.file(
         description='JSON file containing the number of credits achieved.',
-        source='breeam_summary/summary.json',
+        source='breeam_summary/summary.json', alias=breeam_summary
     )
 
     program_summary = Outputs.file(
         description='JSON file with a summary of each program type.',
-        source='breeam_summary/program_summary.json',
+        source='breeam_summary/program_summary.json', alias=breeam_program_summary
     )

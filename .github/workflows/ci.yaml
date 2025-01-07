@@ -59,7 +59,7 @@ jobs:
       - name: deploy to staging
         run: |
           queenbee
-          pollination dsl push pollination-breeam-daylight-4b --tag ${{needs.deploy.outputs.tag}} -e https://api.staging.pollination.cloud -src https://api.staging.pollination.cloud/registries --push-dependencies
+          pollination dsl push pollination-breeam-daylight-4b --tag ${{needs.deploy.outputs.tag}} -e https://api.staging.pollination.solutions -src https://api.staging.pollination.solutions/registries --push-dependencies
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           QB_POLLINATION_TOKEN: ${{ secrets.POLLINATION_STAGING_LADYBUGBOT_TOKEN }}
@@ -91,7 +91,7 @@ jobs:
           TAG=$(echo "${TAG:?}" | sed 's/[[:space:]]//g')
           echo $TAG
           queenbee
-          pollination dsl push pollination-breeam-daylight-4b --tag $TAG -e https://api.pollination.cloud -src https://api.pollination.cloud/registries --push-dependencies
+          pollination dsl push pollination-breeam-daylight-4b --tag $TAG -e https://api.pollination.solutions -src https://api.pollination.solutions/registries --push-dependencies
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           QB_POLLINATION_TOKEN: ${{ secrets.POLLINATION_LADYBUGBOT_TOKEN }}

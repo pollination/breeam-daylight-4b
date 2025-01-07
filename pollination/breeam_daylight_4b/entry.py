@@ -12,6 +12,7 @@ from pollination.alias.inputs.grid import grid_filter_input, \
     min_sensor_count_input, cpu_count
 from pollination.alias.outputs.daylight import breeam_summary, breeam_program_summary
 
+from ._visualization import BreeamDaylight4bVisualization
 
 @dataclass
 class BreeamDaylight4bEntryPoint(DAG):
@@ -98,6 +99,28 @@ class BreeamDaylight4bEntryPoint(DAG):
                 'to': 'breeam_summary'
             }
         ]
+
+    @task(
+        template=BreeamDaylight4bVisualization,
+        needs=[run_two_phase_daylight_coefficient, breem_daylight_4b],
+        sub_paths={
+            'pass_fail': 'pass_fail'
+        }
+    )
+    def create_visualization(
+        self, model=model, pass_fail=breem_daylight_4b._outputs.breeam_summary
+    ):
+        return [
+            {
+                'from': BreeamDaylight4bVisualization()._outputs.visualization,
+                'to': 'visualization.vsf'
+            }
+        ]
+
+    visualization = Outputs.file(
+        source='visualization.vsf',
+        description='Visualization in VisualizationSet format.'
+    )
 
     results = Outputs.folder(
         source='results', description='Folder with raw result files (.ill) that '

@@ -1,3 +1,3 @@
-pollination-two-phase-daylight-coefficient==1.1.47
+pollination-two-phase-daylight-coefficient==1.1.48
 pollination-lbt-honeybee==0.1.17
 pollination-honeybee-display==0.1.17

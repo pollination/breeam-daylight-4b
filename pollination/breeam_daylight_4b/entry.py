@@ -4,7 +4,7 @@ from pollination.two_phase_daylight_coefficient import TwoPhaseDaylightCoefficie
 from pollination.lbt_honeybee.postprocess import Breeam4b
 
 # input/output alias
-from pollination.alias.inputs.model import hbjson_model_grid_input
+from pollination.alias.inputs.model import hbjson_model_room_input
 from pollination.alias.inputs.wea import wea_input_timestep_check
 from pollination.alias.inputs.north import north_input
 from pollination.alias.inputs.radiancepar import rad_par_annual_input
@@ -67,7 +67,7 @@ class BreeamDaylight4bEntryPoint(DAG):
         'This can also be a zipped version of a Radiance folder, in which case this '
         'recipe will simply unzip the file and simulate it as-is.',
         extensions=['json', 'hbjson', 'pkl', 'hbpkl', 'zip'],
-        alias=hbjson_model_grid_input
+        alias=hbjson_model_room_input
     )
 
     wea = Inputs.file(

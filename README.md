@@ -178,7 +178,7 @@ It checks whether the required percentage of your floor area simultaneously meet
       <td>All occupied spaces</td>
       <td align="center">2</td>
       <td align="center">80%</td>
-      <td>At least 300 lux for 2000 hours. per year or more</td>
+      <td>At least 300 lux for 2000 hours per year or more</td>
       <td>At least 90 lux for 2000 hours per year or more</td>
     </tr>
     <tr>

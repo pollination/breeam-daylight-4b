@@ -32,6 +32,12 @@ Your programs must match one of the following exact text strings:
 * `BREEAM::Creche_buildings::Occupied_spaces`
 * `BREEAM::Other_buildings::Occupied_spaces`
 
+You can create these program type yourself, or you can download [this](https://github.com/pollination/breeam-daylight-4b/blob/master/breeam_program_types.json) file to your standards folder:
+
+`C:\Users\%USERNAME%\AppData\Roaming\ladybug_tools\standards\programtypes`
+
+When placed in the standards folder, you should be able to find the programs with the HB Search Programs component and using "BREEAM" as the keyword.
+
 ### Credits and Post-Processing
 
 The BREEAM daylight recipe automates the entire credit calculation during the post-processing phase. By cross-referencing the specific room programs you have assigned with the standard target thresholds outlined in the table below, the recipe evaluates your annual simulation data. 
